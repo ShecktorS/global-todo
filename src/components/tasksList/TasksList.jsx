@@ -3,14 +3,16 @@ import { Context } from "../../store";
 import { GET } from "../../utils/http";
 import Task from "../task/Task";
 import styles from "./index.module.scss";
+import { todos } from "../../mocks/todoList";
 
 const TasksList = () => {
   const { state, dispatch } = useContext(Context);
 
+  //-----------------------------------------------
+  //Lascio lo useEffect in modo tale da popolare la lista al momento del montaggio del componente
+
   useEffect(() => {
-    GET("todos").then((res) => {
-      dispatch({ type: "SET_TASKS_LIST", payload: res.todos });
-    });
+    dispatch({ type: "SET_TASKS_LIST", payload: todos });
   }, []);
 
   return (

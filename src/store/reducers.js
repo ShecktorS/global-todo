@@ -15,5 +15,42 @@ export const mainReducer = (state, action) => {
         ...state,
         isModalVisible: action.payload,
       };
+    case "ADD_PERSON_TASK":
+      return {
+        ...state,
+        addTask: {
+          ...state.addTask,
+          person: action.payload,
+        },
+      };
+    case "ADD_TODO_TASK":
+      return {
+        ...state,
+        addTask: {
+          ...state.addTask,
+          todo: action.payload,
+        },
+      };
+    case "ADD_LINK_TASK":
+      return {
+        ...state,
+        addTask: {
+          ...state.addTask,
+          link: action.payload,
+        },
+      };
+    case "ADD_ID_TASK":
+      return {
+        ...state,
+        addTask: {
+          ...state.addTask,
+          id: state.tasksListData.length++, //Da sistemare
+        },
+      };
+    case "ADD_TASK":
+      return {
+        ...state,
+        tasksListData: [...state.tasksListData, action.payload],
+      };
   }
 };
